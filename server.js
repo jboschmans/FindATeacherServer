@@ -30,7 +30,7 @@ app.get('/id/:id', function(req, res){
   var _id = req.params.id;
   mongo.connect(url, function(err, db){
     if (err) throw err;
-    db.collection(col).findOne({
+    db.collection(col).find({
       id: _id
     }).toArray(function(err, docs){
       if (err) throw err;
