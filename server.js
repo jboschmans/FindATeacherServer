@@ -31,7 +31,7 @@ app.get('/id/:id', function(req, res){
   mongo.connect(url, function(err, db){
     if (err) throw err;
     db.collection(col).find({
-      '_id.$oid': _id
+      "_id": ObjectId(_id)
     }).toArray(function(err, docs){
       if (err) throw err;
       res.send(JSON.stringify(docs));
