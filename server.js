@@ -26,6 +26,19 @@ app.get('/search/:plaats/:titel', function(req, res){
   });
 });
 
+app.get('/id/:id', function(req, res){
+  var _id = req.params.id;
+  mongo.connect(url, function(err, db){
+    if (err) throw err;
+    db.collection(col).find({
+      _id: _id;
+    }).toArray(function(err, docs){
+      if (err) throw err;
+      res.send(JSON.stringify(docs));
+    });
+  });
+});
+
 app.listen(process.env.PORT || 3000, function(){
   console.log('Listening.....');
 });
