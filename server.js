@@ -45,6 +45,7 @@ app.get('/id/:id', function(req, res){
   });
 });
 
+app.options('/insert', cors());
 app.post('/insert', function(req, res, next){
   //res.send(JSON.stringify(req.body));
   mongo.connect(url, function(err, db){
