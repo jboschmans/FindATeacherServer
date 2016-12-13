@@ -43,11 +43,14 @@ app.get('/id/:id', function(req, res){
 });
 
 app.post('/insert', function(req, res, next){
-  res.send(JSON.stringify(req.body));
+  //res.send(JSON.stringify(req.body));
   mongo.connect(url, function(err, db){
     if (err) res.send("1");
 
-    db.collection(col).insert(req.body, function(err, doc){
+    db.collection(col).insert({
+      id: qdfgqdfg,
+      plaats: sdfgqfdg
+    }, function(err, doc){
       if (err) res.send("2");
 
       res.send(JSON.stringify(doc));
