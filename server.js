@@ -48,8 +48,8 @@ app.post('/insert', function(req, res, next){
     if (err) res.send("1");
 
     db.collection(col).insert({
-      id: "qdfgqdfg",
-      plaats: "sdfgqfdg"
+      id: req.body.id,
+      plaats: req.body.plaats
     }, function(err, doc){
       if (err) res.send("2");
 
