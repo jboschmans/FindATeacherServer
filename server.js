@@ -40,14 +40,14 @@ app.get('/id/:id', function(req, res){
 });
 
 app.post('/insert', function(req, res){
-  res.send(JSON.stringify(req.body));
-  /*mongo.connect(url, function(err, db){
+  //res.send(JSON.stringify(req.body));
+  mongo.connect(url, function(err, db){
     if (err) throw err;
-    db.collection(col).insert(req.params, function(err, doc){
+    db.collection(col).insert(req.body, function(err, doc){
       if (err) throw err;
       console.log(doc);
     });
-  });*/
+  });
 });
 
 app.listen(process.env.PORT || 3000, function(){
