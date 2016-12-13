@@ -14,6 +14,7 @@ var col = "findateacherserver";
 });*/
 
 app.use(cors());
+app.options('*', cors());
 
 app.get('/search/:plaats/:titel', function(req, res){
   var _plaats = req.params.plaats;
@@ -45,8 +46,8 @@ app.get('/id/:id', function(req, res){
   });
 });
 
-app.options('/insert', cors());
-app.post('/insert', function(req, res, next){
+
+app.post('/insert', cors(), function(req, res, next){
   //res.send(JSON.stringify(req.body));
   mongo.connect(url, function(err, db){
     if (err) res.send("1");
