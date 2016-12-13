@@ -42,14 +42,7 @@ app.get('/id/:id', function(req, res){
 app.post('/insert', function(req, res){
   mongo.connect(url, function(err, db){
     if (err) throw err;
-    db.collection(col).insert({
-      id: "qsgqdfgqger",
-      naam: req.params.naam,
-      adres: {
-        straat: req.params.straat,
-        plaats: req.params.plaats
-      }
-    }, function(err, doc){
+    db.collection(col).insert(req.params, function(err, doc){
       if (err) throw err;
       console.log(doc);
     });
