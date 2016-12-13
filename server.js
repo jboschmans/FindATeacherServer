@@ -47,17 +47,30 @@ app.get('/id/:id', function(req, res){
 });
 
 
-app.get('/insert/:id/:plaats', function(req, res){
-  //res.send(JSON.stringify(req.body));
+app.get('/insert/:id/:naam/:wachtwoord/:plaats/:titel/:uitleg/:prijs/:aleerkrachtThuis/:aleerlingThuis/:avideochat/:cemail/:ctelefoon/:cwebsite', function(req, res){
+
   mongo.connect(url, function(err, db){
-    if (err) res.send("1");
-
+    if (err) throw err;
     db.collection(col).insert({
-      id: req.params.id,
-      plaats: req.params.plaats
+      id: this.params.id,
+      naam: this.params.naam,
+      wachtwoord: this.params.wachtwoord,
+      plaats: this.params.plaats,
+      titel: this.params.titel,
+      uitleg: this.params.uitleg,
+      prijs: this.params.prijs,
+      afspraakManieren: {
+        leerkrachtThuis: this.params.leerkrachtThuis,
+        leerlingThuis: this.params.leerlingThuis,
+        videochat: this.params.videochat
+      },
+      contact: {
+        email: this.params.email,
+        telefoon: this.params.telefoon,
+        website: this.params.website
+      }
     }, function(err, doc){
-      if (err) res.send("2");
-
+      if (err) throw err;
       res.send(JSON.stringify(doc));
     });
   });
