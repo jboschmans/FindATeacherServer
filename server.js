@@ -40,7 +40,7 @@ app.get('/id/:id', function(req, res){
 });
 
 app.post('/insert', function(req, res){
-  res.send(req.params.id);
+  res.send(req.body);
   /*mongo.connect(url, function(err, db){
     if (err) throw err;
     db.collection(col).insert(req.params, function(err, doc){
