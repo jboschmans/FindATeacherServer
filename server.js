@@ -5,7 +5,7 @@ var col = "findateacherserver";
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Origin", "http://findateacher.atwebpages.com");
+//  res.header("Access-Control-Allow-Origin", "http://findateacher.atwebpages.com");
   res.header("Access-Control-Allow-Headers", "*");
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -48,8 +48,8 @@ app.post('/insert', function(req, res, next){
     if (err) res.send("1");
 
     db.collection(col).insert({
-      id: qdfgqdfg,
-      plaats: sdfgqfdg
+      id: "qdfgqdfg",
+      plaats: "sdfgqfdg"
     }, function(err, doc){
       if (err) res.send("2");
 
