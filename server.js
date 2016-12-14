@@ -47,29 +47,29 @@ app.get('/id/:id', function(req, res){
 });
 
 
-app.get('/insert/:id/:naam/:email/:wachtwoord/:plaats/:titel/:uitleg/:prijs/:aleerkrachtThuis/:aleerlingThuis/:avideochat/:cemail/:ctelefoon/:cwebsite', function(req, res){
+app.get('/insert/:id/:naam/'/*':email/:wachtwoord/:plaats/:titel/:uitleg/:prijs/:aleerkrachtThuis/:aleerlingThuis/:avideochat/:cemail/:ctelefoon/:cwebsite'*/, function(req, res){
 
   mongo.connect(url, function(err, db){
     if (err) throw err;
     db.collection(col).insert({
-      id: this.params.id,
-      naam: this.params.naam,
-      email: this.params.email,
-      wachtwoord: this.params.wachtwoord,
-      plaats: this.params.plaats,
-      titel: this.params.titel,
-      uitleg: this.params.uitleg,
-      prijs: this.params.prijs,
-      afspraakManieren: {
-        leerkrachtThuis: this.params.aleerkrachtThuis,
-        leerlingThuis: this.params.aleerlingThuis,
-        videochat: this.params.avideochat
+      "id": this.params.id,
+      "naam": this.params.naam/*,
+      "email": this.params.email,
+      "wachtwoord": this.params.wachtwoord,
+      "plaats": this.params.plaats,
+      "titel": this.params.titel,
+      "uitleg": this.params.uitleg,
+      "prijs": this.params.prijs,
+      "afspraakManieren": {
+        "leerkrachtThuis": this.params.aleerkrachtThuis,
+        "leerlingThuis": this.params.aleerlingThuis,
+        "videochat": this.params.avideochat
       },
-      contact: {
-        email: this.params.cemail,
-        telefoon: this.params.ctelefoon,
-        website: this.params.cwebsite
-      }
+      "contact": {
+        "email": this.params.cemail,
+        "telefoon": this.params.ctelefoon,
+        "website": this.params.cwebsite
+      }*/
     }, function(err, doc){
       if (err) throw err;
       res.send(JSON.stringify(doc));
