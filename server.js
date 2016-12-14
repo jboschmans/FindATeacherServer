@@ -49,7 +49,7 @@ app.get('/id/:id', function(req, res){
 
 app.get('/insert/:id/:naam/'/*':email/:wachtwoord/:plaats/:titel/:uitleg/:prijs/:aleerkrachtThuis/:aleerlingThuis/:avideochat/:cemail/:ctelefoon/:cwebsite'*/, function(req, res){
 
-  mongo.connect(url, function(err, db){
+  mongo.connect(url, function(err, db, next){
     if (err) throw err;
     db.collection(col).insert({
       "id": this.params.id,
@@ -72,7 +72,8 @@ app.get('/insert/:id/:naam/'/*':email/:wachtwoord/:plaats/:titel/:uitleg/:prijs/
       }*/
     }, function(err, doc){
       if (err) throw err;
-      res.send(/*JSON.stringify(doc)*/);
+      //res.send(/*JSON.stringify(doc)*/);
+      next();
     });
   });
 });
