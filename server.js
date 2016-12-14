@@ -36,6 +36,23 @@ app.get('/id/:id', function(req, res){
   });
 });
 
+app.get('/login/:email', function (req, res){
+  var _email = req.params.email;
+  mongo.connect(url, function (err, db){
+    if (err) throw err;
+    db.collection(col).find({
+      email: _email
+    }).toArray(function(err, docs){
+      if (err) throw err;
+      var doc = docs[0];
+      res.send(JSON.stringify({
+        email: doc.email,
+        wachtwoord: doc.wachtwoord
+      }));
+    });
+  });
+});
+
 app.listen(process.env.PORT || 3000, function(){
   console.log('Listening.....');
 });
