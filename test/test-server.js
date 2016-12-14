@@ -88,29 +88,3 @@ describe('Find A Teacher Server', function(){
   });
 
 });
-
-
-
-
-//
-
-
-/*
-var chai = require('chai');
-var chaiHttp = require('chai-http');
-var server = require('../server');
-var should = chai.should();
-
-chai.use(chaiHttp);
-
-describe('Find A Teacher Server', function(){
-  it('get search per plaats en titel', function(done){
-    chai.request(server)
-      .get('/search/gent/e')
-      .end(function(err, res){
-        res.should.have.status(200);
-        done();
-      });
-  });
-});
-*/
