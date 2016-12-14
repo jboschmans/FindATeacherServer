@@ -47,13 +47,13 @@ app.get('/id/:id', function(req, res){
 });
 
 
-app.get('/insert/:id/:naam/'/*':email/:wachtwoord/:plaats/:titel/:uitleg/:prijs/:aleerkrachtThuis/:aleerlingThuis/:avideochat/:cemail/:ctelefoon/:cwebsite'*/, function(req, res){
+app.get('/insert/:id/:naam'/*':email/:wachtwoord/:plaats/:titel/:uitleg/:prijs/:aleerkrachtThuis/:aleerlingThuis/:avideochat/:cemail/:ctelefoon/:cwebsite'*/, function(req, res){
 
   mongo.connect(url, function(err, db, next){
     if (err) throw err;
     db.collection(col).insert({
-      "id": this.params.id,
-      "naam": this.params.naam/*,
+      id: this.params.id,
+      naam: this.params.naam/*,
       "email": this.params.email,
       "wachtwoord": this.params.wachtwoord,
       "plaats": this.params.plaats,
