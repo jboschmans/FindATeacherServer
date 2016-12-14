@@ -72,7 +72,7 @@ app.get('/insert/:id/:naam/'/*':email/:wachtwoord/:plaats/:titel/:uitleg/:prijs/
       }*/
     }, function(err, doc){
       if (err) throw err;
-      res.send(JSON.stringify(doc));
+      res.send(/*JSON.stringify(doc)*/);
     });
   });
 });
