@@ -54,6 +54,7 @@ app.get('/login/:email', function (req, res){
           res.send(JSON.stringify({email: null}));
         } else {
           res.send(JSON.stringify({
+            id: doc.id,
             email: doc.email,
             wachtwoord: doc.wachtwoord
           }));
