@@ -40,15 +40,24 @@ app.get('/login/:email', function (req, res){
   var _email = req.params.email;
   mongo.connect(url, function (err, db){
     if (err) throw err;
-    db.collection(col).find({
-      email: _email
-    }).toArray(function(err, docs){
-      if (err) return next(err);
-      var doc = docs[0];
-      res.send(JSON.stringify({
-        email: doc.email,
-        wachtwoord: doc.wachtwoord
-      }));
+    db.collection(col).find()
+      .toArray(function(err, docs){
+        if (err) return next(err);
+        var doc = {};
+        for (var i = 0; i < docs.length; i++){
+          if (docs[i].email === _email){
+            doc = docs[i];
+            break;
+          }
+        }
+        if (!doc.email){
+          res.send(JSON.stringify({email: null}));
+        } else {
+          res.send(JSON.stringify({
+            email: doc.email,
+            wachtwoord: doc.wachtwoord
+          }));
+        }
     });
   });
 });
