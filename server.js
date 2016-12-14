@@ -27,11 +27,21 @@ app.get('/id/:id', function(req, res){
   var _id = req.params.id;
   mongo.connect(url, function(err, db){
     if (err) throw err;
-    db.collection(col).find({
-      id: _id
-    }).toArray(function(err, docs){
-      if (err) throw err;
-      res.send(JSON.stringify(docs));
+    db.collection(col).find()
+      .toArray(function(err, docs){
+        if (err) throw err;
+        var doc = {};
+        for (var i = 0; i < docs.length; i++){
+          if (docs[i].id === _id){
+            doc = docs[i];
+            break;
+          }
+        }
+        if (!doc.id){
+          res.send(JSON.stringify({id: null}));
+        } else {
+          res.send(JSON.stringify(doc));
+        }
     });
   });
 });
